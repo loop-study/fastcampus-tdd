@@ -1,10 +1,8 @@
-package tdd_basic_5;
+package tdd_basic_6;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import tdd_basic_5.BlankReplace;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +21,7 @@ class BlankReplaceTest {
                      ,  "hello           world"})
     @DisplayName("배열로 테스트")
     public void blankArrayTest(String s) throws Exception {
-        boolean result = blankReplace.refineTest(s).equals("hello world");
+        boolean result = blankReplace.refineText(s).equals("hello world");
         assertEquals(result, true);
     }
 
@@ -31,7 +29,7 @@ class BlankReplaceTest {
     @CsvSource(value = {"hello\t world", "hello \tworld"})
     @DisplayName("tab 공백 테스트")
     public void tabTest(String s) throws Exception {
-        boolean result = blankReplace.refineTest(s).equals("hello world");
+        boolean result = blankReplace.refineText(s).equals("hello world");
         assertEquals(result, true);
     }
 
@@ -43,7 +41,7 @@ class BlankReplaceTest {
         String s = "hello " + word;
         String actual = "hello " + blankReplace.repeat(word.length());
 
-        boolean result = blankReplace.refineTest(s, bannedWords).equals(actual);
+        boolean result = blankReplace.refineText(s, bannedWords).equals(actual);
         assertEquals(result, true);
     }
 }
